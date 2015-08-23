@@ -11,9 +11,13 @@ namespace GameWindows.Game.Player
 
 	internal interface IPlayer : ICreature
 	{
+		/// <summary>
+		/// Amount of hit points of the player
+		/// </summary>
+		int Health { get; set; }
 	}
 
-    public class Player : IPlayer
+    public class Player : Creature, IPlayer
     {
         public Player(Texture2D texture, Vector2 position)
         {
@@ -23,43 +27,6 @@ namespace GameWindows.Game.Player
             this.Active = true;
             this.Health = 100;
         }
-
-        // Get the height of the player
-        public float Height { get; set; }
-
-
-        // Position of the player
-        public Vector2 Position { get; set; }
-        
-
-        // Get width of the player
-        public float Width { get; set; }
-
-
-        public void Draw(SpriteBatch sb, float delta)
-        {
-            sb.Draw(this.Texture, this.Position, null, null, Vector2.One / 2f, 0, Vector2.One * 2, Color.White, SpriteEffects.None, 0);
-        }
-
-        public void Update(float delta)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// State of the player
-        /// </summary>
-        public bool Active { get; set; }
-
-        /// <summary>
-        /// Animation of the player
-        /// </summary>
-        public Texture2D Texture { get; set; }
 
         /// <summary>
         /// Amount of hit points of the player

@@ -7,6 +7,14 @@ namespace GameWindows.Game.Base
 	internal interface IObject : IDisposable
 	{
 		/// <summary>
+		/// Gets or sets a value indicating whether this <see cref="IObject"/> is active.
+		/// </summary>
+		/// <value>
+		///   <c>true</c> if active; otherwise, <c>false</c>.
+		/// </value>
+		bool Active { get; set; }
+
+		/// <summary>
 		/// Gets or sets the texture.
 		/// </summary>
 		/// <value>
