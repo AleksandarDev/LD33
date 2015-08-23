@@ -1,4 +1,5 @@
-﻿using GameWindows.Game.Base;
+﻿using System;
+using GameWindows.Game.Base;
 using GameWindows.Game.Player;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -74,10 +75,10 @@ namespace GameWindows
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update(GameTime gameTime)
 		{
-            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
 			if (gamePadState.IsConnected)
 			{
-				if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+				if (gamePadState.Buttons.Back == ButtonState.Pressed)
 					Exit();
 
 				if (gamePadState.Buttons.X == ButtonState.Pressed)
@@ -87,7 +88,7 @@ namespace GameWindows
 				this.player.Move(
 						gamePadState.ThumbSticks.Left.X*this.player.Speed,
 						-gamePadState.ThumbSticks.Left.Y*this.player.Speed);
-				this.player.RotateTo(gamePadState.ThumbSticks.Right);
+				this.player.Rotation = (float) Math.Atan2(gamePadState.ThumbSticks.Right.X, gamePadState.ThumbSticks.Right.Y);
 			}
 			else
 			{
