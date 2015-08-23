@@ -74,20 +74,20 @@ namespace GameWindows
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update(GameTime gameTime)
 		{
-			GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
 			if (gamePadState.IsConnected)
 			{
 				if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-					Exit();
+                Exit();
 
-				if (gamePadState.Buttons.X == ButtonState.Pressed)
-				{
+            if (gamePadState.Buttons.X == ButtonState.Pressed) 
+            {
 				}
-
+                
 				this.player.Move(
 					gamePadState.ThumbSticks.Left.X*this.player.Speed,
 					-gamePadState.ThumbSticks.Left.Y*this.player.Speed);
-			}
+            }
 			else
 			{
 				var keyboardState = Keyboard.GetState();
@@ -106,16 +106,16 @@ namespace GameWindows
 				this.player.Move(moveAmount.X * this.player.Speed, moveAmount.Y * this.player.Speed);
 
 				// Rotate towards mouse
-				MouseState state = Mouse.GetState();
-				this.player.RotateTo(new Vector2(state.X, state.Y));
+			MouseState state = Mouse.GetState();
+			this.player.RotateTo(new Vector2(state.X, state.Y));
 			}
 
 			// Move health bar and set new health value
-			this.playerhp.Position = new Vector2(this.player.Position.X - 10, this.player.Position.Y - 20);
+			this.playerhp.Position = new Vector2(this.player.Position.X - 25, this.player.Position.Y - 40);
 			this.playerhp.SetHealth(this.player.Health);
 
 
-			base.Update(gameTime);
+            base.Update(gameTime);
 		}
 
 		/// <summary>
