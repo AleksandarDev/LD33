@@ -78,14 +78,15 @@ namespace GameWindows
 			if (gamePadState.IsConnected)
 			{
 				if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                Exit();
+					Exit();
 
-            if (gamePadState.Buttons.X == ButtonState.Pressed) 
-            {
-				this.player.Move(
-					gamePadState.ThumbSticks.Left.X*this.player.Speed,
-					-gamePadState.ThumbSticks.Left.Y*this.player.Speed);
-            }
+				if (gamePadState.Buttons.X == ButtonState.Pressed)
+				{
+					this.player.Move(
+						gamePadState.ThumbSticks.Left.X*this.player.Speed,
+						-gamePadState.ThumbSticks.Left.Y*this.player.Speed);
+				}
+			}
 			else
 			{
 				var keyboardState = Keyboard.GetState();
@@ -101,11 +102,11 @@ namespace GameWindows
 				if (keyboardState.IsKeyDown(Keys.W)) moveAmount.Y -= 1;
 				if (keyboardState.IsKeyDown(Keys.S)) moveAmount.Y += 1;
 				moveAmount.Normalize();
-				this.player.Move(moveAmount.X * this.player.Speed, moveAmount.Y * this.player.Speed);
+				this.player.Move(moveAmount.X*this.player.Speed, moveAmount.Y*this.player.Speed);
 
 				// Rotate towards mouse
-			MouseState state = Mouse.GetState();
-			this.player.RotateTo(new Vector2(state.X, state.Y));
+				MouseState state = Mouse.GetState();
+				this.player.RotateTo(new Vector2(state.X, state.Y));
 			}
 
 			// Move health bar and set new health value
