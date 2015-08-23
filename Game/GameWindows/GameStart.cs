@@ -7,9 +7,13 @@ namespace GameWindows
 	/// <summary>
 	/// This is the main type for your game.
 	/// </summary>
-	public class GameStart : Game
+	public class GameStart : Microsoft.Xna.Framework.Game
 	{
+		/// <summary>
+		/// The graphics.
+		/// </summary>
 		GraphicsDeviceManager graphics;
+
 		SpriteBatch spriteBatch;
 
 		public GameStart()
