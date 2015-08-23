@@ -7,15 +7,28 @@ namespace GameWindows.Game.Base
 	public abstract class MovableBase : IMovable
 	{
 		private Vector2? destination;
+        
 
+        public MovableBase()
+        {
 
-		/// <summary>
-		/// Gets or sets a value indicating whether this <see cref="IObject" /> is active.
-		/// </summary>
-		/// <value>
-		///   <c>true</c> if active; otherwise, <c>false</c>.
-		/// </value>
-		public bool Active { get; set; }
+        }
+
+        public MovableBase(Texture2D texture, Vector2 position, float width, float height)
+        {
+            Texture = texture;
+            this.Position = position;
+            this.Width = width;
+            this.Height = height;
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="IObject" /> is active.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if active; otherwise, <c>false</c>.
+        /// </value>
+        public bool Active { get; set; }
 
 		/// <summary>
 		/// Gets or sets the height of the object.
@@ -190,16 +203,15 @@ namespace GameWindows.Game.Base
 		}
 
 
-		#region IDisposable Support
+        #region IDisposable Support
 
-		// To detect redundant calls
-		private bool disposedValue = false; 
+        private bool disposedValue = false;
 
-		/// <summary>
-		/// Releases unmanaged and - optionally - managed resources.
-		/// </summary>
-		/// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
-		protected virtual void Dispose(bool disposing)
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
 		{
 			if (!disposedValue)
 			{

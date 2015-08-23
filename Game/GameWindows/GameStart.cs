@@ -98,6 +98,12 @@ namespace GameWindows
             if (Keyboard.GetState().IsKeyDown(Keys.S))
                 this.player.Position += new Vector2(0, 3);
 
+            this.playerhp.SetHealth(this.player.Health);
+
+            this.playerhp.Position = new Vector2(this.player.Position.X -10, this.player.Position.Y -20);
+            
+            
+
 			MouseState state = Mouse.GetState();
 			this.player.RotateTo(new Vector2(state.X, state.Y));
 
