@@ -25,6 +25,7 @@ namespace GameWindows.Game.Player
             this.Position = position;
             this.Active = true;
             this.Health = 100;
+	        this.Speed = 3;
         }
 
         /// <summary>

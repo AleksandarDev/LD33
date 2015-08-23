@@ -105,7 +105,7 @@ namespace GameWindows.Game.Base
 		/// <exception cref="NotImplementedException"></exception>
 		public void Move(float xDelta, float yDelta)
 		{
-			this.Position += new Vector2(xDelta, yDelta);
+			this.Position += new Vector2(float.IsNaN(xDelta) ? 0 : xDelta, float.IsNaN(yDelta) ? 0 : yDelta);
 		}
 
 		/// <summary>

@@ -74,43 +74,48 @@ namespace GameWindows
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update(GameTime gameTime)
 		{
-            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+			GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+			if (gamePadState.IsConnected)
+			{
+				if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+					Exit();
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+				if (gamePadState.Buttons.X == ButtonState.Pressed)
+				{
+				}
 
-            if (gamePadState.Buttons.X == ButtonState.Pressed) 
-            {
-                
-            }
+				this.player.Move(
+					gamePadState.ThumbSticks.Left.X*this.player.Speed,
+					-gamePadState.ThumbSticks.Left.Y*this.player.Speed);
+			}
+			else
+			{
+				var keyboardState = Keyboard.GetState();
 
-            this.player.Position += new Vector2(gamePadState.ThumbSticks.Left.X *3 , -gamePadState.ThumbSticks.Left.Y *3);
+				// Exit on escape
+				if (keyboardState.IsKeyDown(Keys.Escape))
+					this.Exit();
 
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-                this.player.Position += new Vector2(-3, 0);
+				// Move player
+				var moveAmount = Vector2.Zero;
+				if (keyboardState.IsKeyDown(Keys.A)) moveAmount.X -= 1;
+				if (keyboardState.IsKeyDown(Keys.D)) moveAmount.X += 1;
+				if (keyboardState.IsKeyDown(Keys.W)) moveAmount.Y -= 1;
+				if (keyboardState.IsKeyDown(Keys.S)) moveAmount.Y += 1;
+				moveAmount.Normalize();
+				this.player.Move(moveAmount.X * this.player.Speed, moveAmount.Y * this.player.Speed);
 
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
-                this.player.Position += new Vector2(3, 0);
+				// Rotate towards mouse
+				MouseState state = Mouse.GetState();
+				this.player.RotateTo(new Vector2(state.X, state.Y));
+			}
 
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
-                this.player.Position += new Vector2(0, -3);
-
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
-                this.player.Position += new Vector2(0, 3);
-
-            this.playerhp.SetHealth(this.player.Health);
-
-            this.playerhp.Position = new Vector2(this.player.Position.X -10, this.player.Position.Y -20);
-            
-            
-
-			MouseState state = Mouse.GetState();
-			this.player.RotateTo(new Vector2(state.X, state.Y));
+			// Move health bar and set new health value
+			this.playerhp.Position = new Vector2(this.player.Position.X - 10, this.player.Position.Y - 20);
+			this.playerhp.SetHealth(this.player.Health);
 
 
-            // TODO: Add your update logic here
-
-            base.Update(gameTime);
+			base.Update(gameTime);
 		}
 
 		/// <summary>
