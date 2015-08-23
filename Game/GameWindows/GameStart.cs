@@ -82,10 +82,11 @@ namespace GameWindows
 
 				if (gamePadState.Buttons.X == ButtonState.Pressed)
 				{
-					this.player.Move(
+				}
+
+				this.player.Move(
 						gamePadState.ThumbSticks.Left.X*this.player.Speed,
 						-gamePadState.ThumbSticks.Left.Y*this.player.Speed);
-				}
 			}
 			else
 			{
