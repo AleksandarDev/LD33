@@ -87,6 +87,7 @@ namespace GameWindows
 				this.player.Move(
 						gamePadState.ThumbSticks.Left.X*this.player.Speed,
 						-gamePadState.ThumbSticks.Left.Y*this.player.Speed);
+				this.player.RotateTo(gamePadState.ThumbSticks.Right);
 			}
 			else
 			{
