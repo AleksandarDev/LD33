@@ -32,7 +32,8 @@ namespace GameWindows
 		protected override void Initialize()
 		{
 			// TODO: Add your initialization logic here
-            Player player = new Player
+			Player player = new Player();
+
           
 
 			base.Initialize();
