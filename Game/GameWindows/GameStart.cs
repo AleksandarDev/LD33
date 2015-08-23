@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GameWindows
 {
+    
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
@@ -12,12 +13,12 @@ namespace GameWindows
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
-        
+        Player player;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="GameStart"/> class.
-		/// </summary>
-		public GameStart()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameStart"/> class.
+        /// </summary>
+        public GameStart()
 		{
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
@@ -31,11 +32,6 @@ namespace GameWindows
 		/// </summary>
 		protected override void Initialize()
 		{
-			// TODO: Add your initialization logic here
-			Player player = new Player();
-
-          
-
 			base.Initialize();
 		}
 
@@ -51,7 +47,7 @@ namespace GameWindows
             // TODO: use this.Content to load your game content here
             Vector2 playerposition = new Vector2(0, GraphicsDevice.Viewport.Height / 2);
 
-                
+            this.player = new Player(Content.Load<Texture2D>("Textures\\Player"), playerposition);                
 		}
 
 		/// <summary>
@@ -70,12 +66,34 @@ namespace GameWindows
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update(GameTime gameTime)
 		{
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-				Exit();
+            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
 
-			// TODO: Add your update logic here
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
 
-			base.Update(gameTime);
+            if (gamePadState.Buttons.X == ButtonState.Pressed) 
+            {
+                
+            }
+
+            this.player.Position += new Vector2(gamePadState.ThumbSticks.Left.X *3 , -gamePadState.ThumbSticks.Left.Y *3);
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+                this.player.Position += new Vector2(-3, 0);
+
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+                this.player.Position += new Vector2(3, 0);
+
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+                this.player.Position += new Vector2(0, -3);
+
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+                this.player.Position += new Vector2(0, 3);
+
+
+            // TODO: Add your update logic here
+
+            base.Update(gameTime);
 		}
 
 		/// <summary>
@@ -86,7 +104,16 @@ namespace GameWindows
 		{
 			GraphicsDevice.Clear(Color.Purple);
 
-			// TODO: Add your drawing code here
+            // TODO: Add your drawing code here
+
+            spriteBatch.Begin();
+
+            this.player.Draw(spriteBatch, (float)gameTime.ElapsedGameTime.TotalMilliseconds);
+
+            spriteBatch.End();
+
+
+
 
 			base.Draw(gameTime);
 		}
