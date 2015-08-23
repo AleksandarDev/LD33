@@ -96,6 +96,12 @@ namespace GameWindows
             if (Keyboard.GetState().IsKeyDown(Keys.S))
                 this.player.Position += new Vector2(0, 3);
 
+            this.playerhp.SetHealth(this.player.Health);
+
+            this.playerhp.Position = new Vector2(this.player.Position.X -10, this.player.Position.Y -20);
+            
+            
+
 
             // TODO: Add your update logic here
 
