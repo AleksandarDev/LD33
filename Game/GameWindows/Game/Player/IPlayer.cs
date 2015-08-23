@@ -18,7 +18,7 @@ namespace GameWindows.Game.Player
 	}
 
     public class Player : Creature, IPlayer
-	{
+    {
         public Player(Texture2D texture, Vector2 position)
         {
             // Setting player values

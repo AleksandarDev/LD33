@@ -1,4 +1,5 @@
-﻿using GameWindows.Game.Player;
+﻿using GameWindows.Game.Base;
+using GameWindows.Game.Player;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -14,6 +15,7 @@ namespace GameWindows
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
         Player player;
+        HpBar playerhp;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameStart"/> class.
@@ -47,7 +49,11 @@ namespace GameWindows
             // TODO: use this.Content to load your game content here
             Vector2 playerposition = new Vector2(0, GraphicsDevice.Viewport.Height / 2);
 
-            this.player = new Player(Content.Load<Texture2D>("Textures\\Player"), playerposition);                
+            this.player = new Player(Content.Load<Texture2D>("Textures\\Player"), playerposition);
+
+            playerhp = new HpBar(Content.Load<Texture2D>("Textures\\HealthBar"));
+            
+                            
 		}
 
 		/// <summary>
@@ -107,6 +113,8 @@ namespace GameWindows
             // TODO: Add your drawing code here
 
             spriteBatch.Begin();
+
+            playerhp.Draw(spriteBatch, (float)gameTime.ElapsedGameTime.TotalMilliseconds);
 
             this.player.Draw(spriteBatch, (float)gameTime.ElapsedGameTime.TotalMilliseconds);
 
