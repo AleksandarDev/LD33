@@ -9,13 +9,12 @@ namespace GameWindows
 	/// </summary>
 	public class GameStart : Microsoft.Xna.Framework.Game
 	{
-		/// <summary>
-		/// The graphics.
-		/// </summary>
 		GraphicsDeviceManager graphics;
-
 		SpriteBatch spriteBatch;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="GameStart"/> class.
+		/// </summary>
 		public GameStart()
 		{
 			graphics = new GraphicsDeviceManager(this);
@@ -77,7 +76,7 @@ namespace GameWindows
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw(GameTime gameTime)
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
+			GraphicsDevice.Clear(Color.Purple);
 
 			// TODO: Add your drawing code here
 
