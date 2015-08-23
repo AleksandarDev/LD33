@@ -1,13 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameWindows.Game.Player;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace GameWindows
 {
-	/// <summary>
-	/// This is the main type for your game.
-	/// </summary>
-	public class GameStart : Microsoft.Xna.Framework.Game
+    /// <summary>
+    /// This is the main type for your game.
+    /// </summary>
+    public class GameStart : Microsoft.Xna.Framework.Game
 	{
 		/// <summary>
 		/// The graphics.
@@ -15,6 +16,7 @@ namespace GameWindows
 		GraphicsDeviceManager graphics;
 
 		SpriteBatch spriteBatch;
+        
 
 		public GameStart()
 		{
@@ -31,6 +33,8 @@ namespace GameWindows
 		protected override void Initialize()
 		{
 			// TODO: Add your initialization logic here
+            Player player = new Player
+          
 
 			base.Initialize();
 		}
@@ -44,7 +48,10 @@ namespace GameWindows
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			// TODO: use this.Content to load your game content here
+            // TODO: use this.Content to load your game content here
+            Vector2 playerposition = new Vector2(0, GraphicsDevice.Viewport.Height / 2);
+
+                
 		}
 
 		/// <summary>

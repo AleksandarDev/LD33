@@ -13,3 +13,8 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Textures/.gitattributes
+/importer:
+/processor:
+/build:Textures/.gitattributes
+
