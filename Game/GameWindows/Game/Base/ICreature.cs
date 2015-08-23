@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameWindows.Game.Base
@@ -41,7 +42,7 @@ namespace GameWindows.Game.Base
 		/// <exception cref="System.NotImplementedException"></exception>
 		public void RotateTo(Vector2 position)
 		{
-			// TODO Calculate rotation
+			this.Rotation = (float)Math.Atan2(position.Y - this.Position.Y, position.X - this.Position.X) + MathHelper.ToRadians(90);
 		}
 
 		/// <summary>
@@ -51,7 +52,7 @@ namespace GameWindows.Game.Base
 		/// <param name="delta">The delta.</param>
 		public override void Draw(SpriteBatch sb, float delta)
 		{
-			sb.Draw(this.Texture, this.Position, null, null, Vector2.One / 2f, this.Rotation, Vector2.One * 2, Color.White, SpriteEffects.None, 0);
+			sb.Draw(this.Texture, this.Position, null, null, new Vector2(this.Texture.Width / 2f, this.Texture.Height / 2f), this.Rotation, Vector2.One * 2, Color.White, SpriteEffects.None, 0);
 		}
 	}
 }

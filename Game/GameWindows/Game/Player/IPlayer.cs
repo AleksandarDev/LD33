@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GameWindows.Game.Player
 {
-
 	internal interface IPlayer : ICreature
 	{
 		/// <summary>

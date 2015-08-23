@@ -24,6 +24,8 @@ namespace GameWindows
 		{
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
+
+	        IsMouseVisible = true;
 		}
 
 		/// <summary>
@@ -95,6 +97,9 @@ namespace GameWindows
 
             if (Keyboard.GetState().IsKeyDown(Keys.S))
                 this.player.Position += new Vector2(0, 3);
+
+			MouseState state = Mouse.GetState();
+			this.player.RotateTo(new Vector2(state.X, state.Y));
 
 
             // TODO: Add your update logic here

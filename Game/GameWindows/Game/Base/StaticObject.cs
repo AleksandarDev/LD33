@@ -99,7 +99,7 @@ namespace GameWindows.Game.Base
 		/// <param name="delta">The delta.</param>
 		public virtual void Draw(SpriteBatch sb, float delta)
 		{
-            sb.Draw(this.Texture, this.Position, null, null, Vector2.One / 2f, 0, new Vector2(this.Width / this.Texture.Width, this.Height / this.Texture.Height), Color.White);
+            sb.Draw(this.Texture, this.Position, null, null, Vector2.Zero, 0, new Vector2(this.Width / this.Texture.Width, this.Height / this.Texture.Height), Color.White);
 		}
 
 		/// <summary>
