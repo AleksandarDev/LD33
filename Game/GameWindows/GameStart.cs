@@ -100,7 +100,7 @@ namespace GameWindows
 
             this.playerhp.SetHealth(this.player.Health);
 
-            this.playerhp.Position = new Vector2(this.player.Position.X -10, this.player.Position.Y -20);
+            this.playerhp.Position = new Vector2(this.player.Position.X -25, this.player.Position.Y -30);
             
             
 
