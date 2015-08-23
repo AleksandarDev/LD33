@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameStart.cs" />
+    <Compile Include="Game\Base\HpBar.cs" />
     <Compile Include="Game\Base\ICreature.cs" />
     <Compile Include="Game\Base\StaticObject.cs" />
     <Compile Include="Game\Enemy\IEnemy.cs" />

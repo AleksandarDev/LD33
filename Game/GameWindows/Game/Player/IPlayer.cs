@@ -38,7 +38,7 @@ namespace GameWindows.Game.Player
 
         public void Draw(SpriteBatch sb, float delta)
         {
-            sb.Draw(this.Texture, this.Position, Color.White);
+            sb.Draw(this.Texture, this.Position, null, null, Vector2.One / 2f, 0, Vector2.One * 2, Color.White, SpriteEffects.None, 0);
         }
 
         public void Update(float delta)
