@@ -58,6 +58,14 @@ namespace GameWindows.Game.Base
 		}
 
 		/// <summary>
+		/// Gets or sets a value indicating whether this <see cref="IObject" /> is active.
+		/// </summary>
+		/// <value>
+		///   <c>true</c> if active; otherwise, <c>false</c>.
+		/// </value>
+		public bool Active { get; set; }
+
+		/// <summary>
 		/// Gets or sets the texture.
 		/// </summary>
 		/// <value>
@@ -89,16 +97,16 @@ namespace GameWindows.Game.Base
 		/// </summary>
 		/// <param name="sb">The sb.</param>
 		/// <param name="delta">The delta.</param>
-		public void Draw(SpriteBatch sb, float delta)
+		public virtual void Draw(SpriteBatch sb, float delta)
 		{
-			sb.Draw(this.Texture, this.Position, Color.White);
+			sb.Draw(this.Texture, this.Position, null, null, Vector2.One / 2f, 0, new Vector2(this.Width / this.Texture.Width, this.Height / this.Texture.Height), Color.White);
 		}
 
 		/// <summary>
 		/// Updates the object.
 		/// </summary>
 		/// <param name="delta">The delta.</param>
-		public void Update(float delta)
+		public virtual void Update(float delta)
 		{
 			// Do nothing. It's a static object.
 		}
