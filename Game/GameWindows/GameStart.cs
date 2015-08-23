@@ -88,7 +88,11 @@ namespace GameWindows
 				this.player.Move(
 						gamePadState.ThumbSticks.Left.X*this.player.Speed,
 						-gamePadState.ThumbSticks.Left.Y*this.player.Speed);
-				this.player.Rotation = (float) Math.Atan2(gamePadState.ThumbSticks.Right.X, gamePadState.ThumbSticks.Right.Y);
+				if (!float.IsNaN(gamePadState.ThumbSticks.Right.X) && 
+					!float.IsNaN(gamePadState.ThumbSticks.Right.Y) &&
+					Math.Abs(gamePadState.ThumbSticks.Right.X) > 0.0001f && 
+					Math.Abs(gamePadState.ThumbSticks.Right.Y) > 0.0001f)
+					this.player.Rotation = (float) Math.Atan2(gamePadState.ThumbSticks.Right.X, gamePadState.ThumbSticks.Right.Y);
 			}
 			else
 			{
