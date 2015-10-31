@@ -97,9 +97,10 @@ namespace GameWindows
 			else
 			{
 				var keyboardState = Keyboard.GetState();
+                var mouseState = Mouse.GetState();
 
-				// Exit on escape
-				if (keyboardState.IsKeyDown(Keys.Escape))
+                // Exit on escape
+                if (keyboardState.IsKeyDown(Keys.Escape))
 					this.Exit();
 
 				// Move player
@@ -109,11 +110,9 @@ namespace GameWindows
 				if (keyboardState.IsKeyDown(Keys.W)) moveAmount.Y -= 1;
 				if (keyboardState.IsKeyDown(Keys.S)) moveAmount.Y += 1;
 				moveAmount.Normalize();
-				this.player.Move(moveAmount.X*this.player.Speed, moveAmount.Y*this.player.Speed);
 
 				// Rotate towards mouse
-				MouseState state = Mouse.GetState();
-				this.player.RotateTo(new Vector2(state.X, state.Y));
+				this.player.RotateTo(new Vector2(mouseState.X, mouseState.Y));
 			}
 
 			// Move health bar and set new health value
